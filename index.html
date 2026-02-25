@@ -53,7 +53,7 @@
         <!-- job appliation filter tabs -->
         <div id="tabs_container" class="flex items-center gap-2 mt-5">
             <button onclick="tabSwitch('all_tab')" id="all_tab"
-                class="btn bg-white shadow-sm tab-all w-28 text-[16px] font-medium border-none">All</button>
+                class="btn bg-blue-500 text-white tab-all w-28 text-[16px] font-medium border-none">All</button>
             <button onclick="tabSwitch('interview_tab')" id="interview_tab"
                 class="btn bg-white shadow-sm tab-interview w-28 text-[16px] font-medium border-none">Interview</button>
             <button onclick="tabSwitch('rejected_tab')" id="rejected_tab"
@@ -61,9 +61,9 @@
         </div>
 
         <!-- job application card container -->
-        <section id="all_card_container" class="mt-6 grid grid-cols-1 gap-5">All Application</section>
-        <section id="interview_card_container" class="mt-6 grid grid-cols-1 gap-5">Interview Application</section>
-        <section id="rejected_card_container" class="mt-6 grid grid-cols-1 gap-5">Rejected Application</section>
+        <section id="all_card_container" class="mt-6 grid bg-blue-200 grid-cols-1 gap-5">All Application</section>
+        <section id="interview_card_container" class="mt-6 grid bg-red-200 grid-cols-1 gap-5 hidden">Interview Application</section>
+        <section id="rejected_card_container" class="mt-6 grid bg-green-200 grid-cols-1 gap-5 hidden">Rejected Application</section>
 
         <!-- no jobs container -->
         <section class="bg-white shadow-sm rounded-md my-5 text-center p-44">
