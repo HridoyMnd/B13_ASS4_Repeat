@@ -7,6 +7,7 @@
     <title>Job Application Tracker</title>
     <!-- daisiUI and tailwind css cdn -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="./images/application-logo.png" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- google font cdn -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,13 +51,13 @@
         </div>
 
         <!-- job appliation filter tabs -->
-        <div id="tabs-container" class="flex items-center gap-2 mt-5">
-            <button id="all_tab"
-                class="btn tab-all w-28 bg-white shadow-sm text-[16px] font-medium border-none">All</button>
-            <button id="interview_tab"
-                class="btn tab-interview w-28 text-[16px] bg-white shadow-sm font-medium border-none">Interview</button>
-            <button id="rejected_tab"
-                class="btn tab-rejected w-28 text-[16px] bg-white shadow-sm font-medium border-none">Rejeceted</button>
+        <div id="tabs_container" class="flex items-center gap-2 mt-5">
+            <button onclick="tabSwitch('all_tab')" id="all_tab"
+                class="btn bg-white shadow-sm tab-all w-28 text-[16px] font-medium border-none">All</button>
+            <button onclick="tabSwitch('interview_tab')" id="interview_tab"
+                class="btn bg-white shadow-sm tab-interview w-28 text-[16px] font-medium border-none">Interview</button>
+            <button onclick="tabSwitch('rejected_tab')" id="rejected_tab"
+                class="btn bg-white shadow-sm tab-rejected w-28 text-[16px] font-medium border-none">Rejeceted</button>
         </div>
 
         <!-- job application card container -->
