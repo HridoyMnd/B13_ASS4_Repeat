@@ -103,11 +103,16 @@ const applications = [
     // }
 ];
 
-
 // all functionality added below
-const allCardContainer = document.getElementById("all_card_container")
-const interviewCardContainer = document.getElementById("interview_card_container")
-const rejectedCardContainer = document.getElementById("rejected_card_container")
+const cardsContainer = document.querySelector(".cards_container")
+let allCardContainer = document.getElementById("all_card_container")
+let interviewCardContainer = document.getElementById("interview_card_container")
+let rejectedCardContainer = document.getElementById("rejected_card_container")
+let emptyJobContainer = document.getElementById("no_job_container")
+const totalApplication = document.getElementById('total_application')
+const totalInterview = document.getElementById('total_interview')
+const totalRejeced = document.getElementById('total_rejected')
+let availableJobContainer = document.getElementById("available_job")
 
 // initialy hidden interview and rejected container
 interviewCardContainer.classList.add("hidden")
@@ -132,7 +137,7 @@ function tabSwitch(tab) {
         rejectedCardContainer.classList.add("hidden")
         interviewCardContainer.classList.add("hidden")
         allCardContainer.classList.remove("hidden")
-        applicationDisplay(allCardContainer, allCardContainer.childNodes.length);
+        availableJobContainer.innerHTML = allCardContainer.children.length;
     } else if (tab === "interview_tab") {
 
         interviewTab.classList.remove("bg-white", "shadow-sm")
@@ -140,29 +145,14 @@ function tabSwitch(tab) {
         rejectedCardContainer.classList.add("hidden");
         allCardContainer.classList.add("hidden");
         interviewCardContainer.classList.remove("hidden");
-        applicationDisplay(interviewCardContainer, interviewCardContainer.childNodes.length)
+        availableJobContainer.innerHTML = interviewCardContainer.children.length;
     } else {
         rejectedTab.classList.remove("bg-white", "shadow-sm")
         rejectedTab.classList.add("bg-blue-500", "text-white")
         allCardContainer.classList.add("hidden");
         interviewCardContainer.classList.add("hidden");
         rejectedCardContainer.classList.remove("hidden");
-        applicationDisplay(rejectedCardContainer, rejectedCardContainer.childNodes.length);
-    }
-}
-
-// application card display funtionality
-function applicationDisplay(container, containerLength) {
-    if (containerLength < 1) {
-        container.innerHTML =
-            `
-        <section class="bg-white shadow-sm rounded-md my-5 text-center p-44">
-            <img src="./images/document.png" alt="" class="mx-auto">
-            <h2 class="text-2xl font-bold opacity-80 my-3">No Jobs Available</h2>
-            <p class="text-gray-700">Check back soon for new job opportunities</p>
-        </section>
-        `
-
+        availableJobContainer.innerHTML = rejectedCardContainer.children.length;
     }
 }
 
@@ -170,27 +160,22 @@ function applicationDisplay(container, containerLength) {
 function renderAllApplications(applications) {
     for (const application of applications) {
         const card = document.createElement("div");
+        card.classList.add("application_card")
         card.innerHTML = `
               <div class="p-4 rounded-md bg-white shadow-sm flex items-center justify-between">
                   <div class="">
                       <h3 class="text-xl font-bold opacity-80">${application.companyName}</h3>
                       <h4 class="text-lg font-medium opacity-60 mb-5 mt-2">${application.position}</h4>
                       <h5 class="opacity-60"><span>${application.location} . </span><span>${application.type} . </span><span>${application.salary} . </span></h5>
-                      <button class="btn uppercase bg-slate-300 font-semibold mb-5 mt-5">${application.status}</button>
+                      <button class="btn uppercase bg-slate-300 font-semibold mb-5 mt-5 status_btn">${application.status}</button>
                       <p class="text-gray-700 mb-5">${application.description}</p>
-                      <button 
-                        id = "interview_btn"
-                        onclick = "applicationSelectReject('interview_btn')"                         
-                        class="btn border-green-500 text-[16px] font-semibold hover:bg-green-400 hover:text-white duration-300 uppercase text-green-500">Interview</button>
+                      <button                          
+                        class="btn interview_btn border-green-500 text-[16px] font-semibold hover:bg-green-400 hover:text-white duration-300 uppercase text-green-500">Interview</button>
                       <button
-                        id = "reject_btn"
-                        onclick = "applicationSelectReject('reject_btn')"
-                        class="btn border-red-500 text-[16px] font-semibold ml-2 hover:bg-red-400 hover:text-white duration-300 uppercase text-red-500">Rejected</button>
+                        class="btn rejected_btn border-red-500 text-[16px] font-semibold ml-2 hover:bg-red-400 hover:text-white duration-300 uppercase text-red-500">Rejected</button>
                   </div>
                   <button 
-                        id= "delete_btn"
-                        onclick = "deleteApplication('delete_btn')"
-                        class="hover:text-red-500 duration-300 cursor-pointer p-5">
+                        class="hover:text-red-500 delete_btn duration-300 cursor-pointer p-5">
                       <i class="fa-solid fa-trash"></i>
                   </button>
               </div>
@@ -200,23 +185,30 @@ function renderAllApplications(applications) {
 }
 renderAllApplications(applications);
 
-// application delete functionality
-function deleteApplication(btnId) {
-    const targetElement = document.getElementById(btnId);
-    targetElement.parentNode.parentNode.parentNode.removeChild(targetElement.parentNode.parentNode);
-}
 
+// card container event control
+cardsContainer.addEventListener("click", (event) => {
+    const card = event.target.closest(".application_card");
+    let statusBtn = card.querySelector(".status_btn");
+    if (event.target.closest(".delete_btn")) {
+        card.remove();
+    } else if (event.target.classList.contains("interview_btn")) {
+        interviewCardContainer.append(card)
+        statusBtn.innerHTML = "Interview"
+    } else if (event.target.classList.contains("rejected_btn")) {
+        rejectedCardContainer.append(card)
+        statusBtn.innerHTML = "Rejected"
+        }
+    updateJobCounter()
+})
 
-// application select or reject functionallity
-function applicationSelectReject(btnId) {
-    const targetApplication = document.getElementById(btnId).parentNode.parentNode.parentNode ;
-    // console.log(targetApplication);
-    if(btnId === "interview_btn"){
-        interviewCardContainer.innerHTML = ''
-        interviewCardContainer.append(targetApplication);
-    }
-    else{
-        rejectedCardContainer.innerHTML = ""
-        rejectedCardContainer.append(targetApplication)
-    }
+// updateJob counter
+function updateJobCounter() {
+    const applicationCount = allCardContainer.children.length;
+    const interviewCount = interviewCardContainer.children.length;
+    const rejectedCount = rejectedCardContainer.children.length;
+    totalApplication.innerHTML = applicationCount;
+    totalInterview.innerHTML = interviewCount;
+    totalRejeced.innerHTML = rejectedCount;
 }
+updateJobCounter();

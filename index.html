@@ -26,15 +26,15 @@
         <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="bg-white shadow-sm p-4 rounded-sm">
                 <strong class="font-normal text-sm">Total</strong>
-                <h3 id="total_job" class="mt-1 text-2xl font-bold">10</h3>
+                <h3 id="total_application" class="mt-1 text-2xl font-bold"></h3>
             </div>
             <div class="bg-white shadow-sm p-4 rounded-sm">
                 <strong class="font-normal text-sm">Interview</strong>
-                <h3 id="total_interview" class="mt-1 text-2xl font-bold text-green-500">3</h3>
+                <h3 id="total_interview" class="mt-1 text-2xl font-bold text-green-500"></h3>
             </div>
             <div class="bg-white shadow-sm p-4 rounded-sm">
                 <strong class="font-normal text-sm">Rejected</strong>
-                <h3 id="total_rejected" class="mt-1 text-2xl font-bold text-red-500">7</h3>
+                <h3 id="total_rejected" class="mt-1 text-2xl font-bold text-red-500"></h3>
             </div>
         </section>
     </header>
@@ -47,7 +47,7 @@
         <!-- available job counter section -->
         <div class="flex items-center justify-between mb-4">
             <h2 class="text-2xl font-bold">Available Jobs</h2>
-            <h3 class="text-lg font-bold opacity-70"><span id="available_job">10</span><span>Jobs</span></h3>
+            <h3 class="text-lg font-bold opacity-70"><span class="text-green-500 mr-2" id="available_job"></span><span>Jobs</span></h3>
         </div>
 
         <!-- job appliation filter tabs -->
@@ -61,9 +61,11 @@
         </div>
 
         <!-- job application card container -->
-        <section id="all_card_container" class="mt-6 grid grid-cols-1 gap-5"></section>
-        <section id="interview_card_container" class="mt-6 grid grid-cols-1 gap-5"></section>
-        <section id="rejected_card_container" class="mt-6 grid grid-cols-1 gap-5"></section>
+        <div class="cards_container">
+            <section id="all_card_container" class="mt-6 grid grid-cols-1 gap-5"></section>
+            <section id="interview_card_container" class="mt-6 grid grid-cols-1 gap-5"></section>
+            <section id="rejected_card_container" class="mt-6 grid grid-cols-1 gap-5"></section>
+        </div>
 
     </main>
 
