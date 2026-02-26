@@ -21,86 +21,86 @@ const applications = [
         salary: "৳50,000 - ৳75,000",
         description: "Seeking a Node.js developer with strong knowledge of Express and MongoDB."
     },
-    // {
-    //     id: 3,
-    //     companyName: "Digital Spark",
-    //     position: "UI/UX Designer",
-    //     location: "Sylhet, Bangladesh",
-    //     status: "Not Applied",
-    //     type: "Part-Time",
-    //     salary: "৳30,000 - ৳40,000",
-    //     description: "Looking for a creative designer with Figma and modern UI design experience."
-    // },
-    // {
-    //     id: 4,
-    //     companyName: "NextGen IT",
-    //     position: "MERN Stack Developer",
-    //     location: "Remote",
-    //     status: "Not Applied",
-    //     type: "Contract",
-    //     salary: "৳70,000 - ৳90,000",
-    //     description: "We need a MERN stack developer for building scalable web applications."
-    // },
-    // {
-    //     id: 5,
-    //     companyName: "SoftEdge Technologies",
-    //     position: "Junior Web Developer",
-    //     location: "Rajshahi, Bangladesh",
-    //     status: "Not Applied",
-    //     type: "Internship",
-    //     salary: "৳15,000 - ৳20,000",
-    //     description: "Great opportunity for beginners to gain hands-on experience in web development."
-    // },
-    // {
-    //     id: 6,
-    //     companyName: "Skyline Digital",
-    //     position: "Full Stack Developer",
-    //     location: "Khulna, Bangladesh",
-    //     status: "Not Applied",
-    //     type: "Full-Time",
-    //     salary: "৳60,000 - ৳85,000",
-    //     description: "Looking for a full stack developer experienced in React, Node.js, and PostgreSQL."
-    // },
-    // {
-    //     id: 7,
-    //     companyName: "Bright Future Tech",
-    //     position: "Software Engineer",
-    //     location: "Dhaka, Bangladesh",
-    //     status: "Not Applied",
-    //     type: "Full-Time",
-    //     salary: "৳55,000 - ৳80,000",
-    //     description: "Join our engineering team to build scalable SaaS products."
-    // },
-    // {
-    //     id: 8,
-    //     companyName: "Creative Apps Studio",
-    //     position: "Mobile App Developer",
-    //     location: "Remote",
-    //     status: "Not Applied",
-    //     type: "Contract",
-    //     salary: "৳65,000 - ৳95,000",
-    //     description: "Hiring a React Native developer for cross-platform mobile applications."
-    // },
-    // {
-    //     id: 9,
-    //     companyName: "DataMind Analytics",
-    //     position: "Data Analyst",
-    //     location: "Dhaka, Bangladesh",
-    //     status: "Not Applied",
-    //     type: "Full-Time",
-    //     salary: "৳40,000 - ৳65,000",
-    //     description: "Looking for someone skilled in data visualization and SQL."
-    // },
-    // {
-    //     id: 10,
-    //     companyName: "InnoTech Labs",
-    //     position: "DevOps Engineer",
-    //     location: "Chattogram, Bangladesh",
-    //     status: "Not Applied",
-    //     type: "Remote",
-    //     salary: "৳75,000 - ৳1,00,000",
-    //     description: "Seeking a DevOps engineer familiar with Docker, CI/CD pipelines, and cloud services."
-    // }
+    {
+        id: 3,
+        companyName: "Digital Spark",
+        position: "UI/UX Designer",
+        location: "Sylhet, Bangladesh",
+        status: "Not Applied",
+        type: "Part-Time",
+        salary: "৳30,000 - ৳40,000",
+        description: "Looking for a creative designer with Figma and modern UI design experience."
+    },
+    {
+        id: 4,
+        companyName: "NextGen IT",
+        position: "MERN Stack Developer",
+        location: "Remote",
+        status: "Not Applied",
+        type: "Contract",
+        salary: "৳70,000 - ৳90,000",
+        description: "We need a MERN stack developer for building scalable web applications."
+    },
+    {
+        id: 5,
+        companyName: "SoftEdge Technologies",
+        position: "Junior Web Developer",
+        location: "Rajshahi, Bangladesh",
+        status: "Not Applied",
+        type: "Internship",
+        salary: "৳15,000 - ৳20,000",
+        description: "Great opportunity for beginners to gain hands-on experience in web development."
+    },
+    {
+        id: 6,
+        companyName: "Skyline Digital",
+        position: "Full Stack Developer",
+        location: "Khulna, Bangladesh",
+        status: "Not Applied",
+        type: "Full-Time",
+        salary: "৳60,000 - ৳85,000",
+        description: "Looking for a full stack developer experienced in React, Node.js, and PostgreSQL."
+    },
+    {
+        id: 7,
+        companyName: "Bright Future Tech",
+        position: "Software Engineer",
+        location: "Dhaka, Bangladesh",
+        status: "Not Applied",
+        type: "Full-Time",
+        salary: "৳55,000 - ৳80,000",
+        description: "Join our engineering team to build scalable SaaS products."
+    },
+    {
+        id: 8,
+        companyName: "Creative Apps Studio",
+        position: "Mobile App Developer",
+        location: "Remote",
+        status: "Not Applied",
+        type: "Contract",
+        salary: "৳65,000 - ৳95,000",
+        description: "Hiring a React Native developer for cross-platform mobile applications."
+    },
+    {
+        id: 9,
+        companyName: "DataMind Analytics",
+        position: "Data Analyst",
+        location: "Dhaka, Bangladesh",
+        status: "Not Applied",
+        type: "Full-Time",
+        salary: "৳40,000 - ৳65,000",
+        description: "Looking for someone skilled in data visualization and SQL."
+    },
+    {
+        id: 10,
+        companyName: "InnoTech Labs",
+        position: "DevOps Engineer",
+        location: "Chattogram, Bangladesh",
+        status: "Not Applied",
+        type: "Remote",
+        salary: "৳75,000 - ৳1,00,000",
+        description: "Seeking a DevOps engineer familiar with Docker, CI/CD pipelines, and cloud services."
+    }
 ];
 
 // all functionality added below
@@ -137,7 +137,8 @@ function tabSwitch(tab) {
         rejectedCardContainer.classList.add("hidden")
         interviewCardContainer.classList.add("hidden")
         allCardContainer.classList.remove("hidden")
-        availableJobContainer.innerHTML = allCardContainer.children.length;
+        availableJobContainer.innerHTML = allCardContainer.querySelectorAll(".application_card").length;
+
     } else if (tab === "interview_tab") {
 
         interviewTab.classList.remove("bg-white", "shadow-sm")
@@ -145,14 +146,14 @@ function tabSwitch(tab) {
         rejectedCardContainer.classList.add("hidden");
         allCardContainer.classList.add("hidden");
         interviewCardContainer.classList.remove("hidden");
-        availableJobContainer.innerHTML = interviewCardContainer.children.length;
+        availableJobContainer.innerHTML = interviewCardContainer.querySelectorAll(".application_card").length;
     } else {
         rejectedTab.classList.remove("bg-white", "shadow-sm")
         rejectedTab.classList.add("bg-blue-500", "text-white")
         allCardContainer.classList.add("hidden");
         interviewCardContainer.classList.add("hidden");
         rejectedCardContainer.classList.remove("hidden");
-        availableJobContainer.innerHTML = rejectedCardContainer.children.length;
+        availableJobContainer.innerHTML = rejectedCardContainer.querySelectorAll(".application_card").length;
     }
 }
 
@@ -194,18 +195,20 @@ cardsContainer.addEventListener("click", (event) => {
         card.remove();
     } else if (event.target.classList.contains("interview_btn")) {
         const emptyBox = interviewCardContainer.querySelector(".empty_massage")
-        if(emptyBox){
+        if (emptyBox) {
             emptyBox.remove();
         }
         interviewCardContainer.append(card)
         statusBtn.innerHTML = "Interview"
+        // updateJobCounter()
     } else if (event.target.classList.contains("rejected_btn")) {
         const emptyBox = rejectedCardContainer.querySelector(".empty_massage")
-        if(emptyBox){
+        if (emptyBox) {
             emptyBox.remove();
         }
         rejectedCardContainer.append(card)
         statusBtn.innerHTML = "Rejected"
+        // updateJobCounter()
     }
     updateJobCounter()
     renderEmptyContainer();
@@ -213,12 +216,13 @@ cardsContainer.addEventListener("click", (event) => {
 
 // updateJob counter
 function updateJobCounter() {
-    const applicationCount = allCardContainer.children.length;
-    const interviewCount = interviewCardContainer.children.length;
-    const rejectedCount = rejectedCardContainer.children.length;
+    const applicationCount = allCardContainer.querySelectorAll(".application_card").length;
+    const interviewCount = interviewCardContainer.querySelectorAll(".application_card").length;
+    const rejectedCount = rejectedCardContainer.querySelectorAll(".application_card").length;
     totalApplication.innerHTML = applicationCount;
     totalInterview.innerHTML = interviewCount;
     totalRejeced.innerHTML = rejectedCount;
+    availableJobContainer.innerHTML = applicationCount
 }
 updateJobCounter();
 
