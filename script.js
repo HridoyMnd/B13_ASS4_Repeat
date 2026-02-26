@@ -193,13 +193,22 @@ cardsContainer.addEventListener("click", (event) => {
     if (event.target.closest(".delete_btn")) {
         card.remove();
     } else if (event.target.classList.contains("interview_btn")) {
+        const emptyBox = interviewCardContainer.querySelector(".empty_massage")
+        if(emptyBox){
+            emptyBox.remove();
+        }
         interviewCardContainer.append(card)
         statusBtn.innerHTML = "Interview"
     } else if (event.target.classList.contains("rejected_btn")) {
+        const emptyBox = rejectedCardContainer.querySelector(".empty_massage")
+        if(emptyBox){
+            emptyBox.remove();
+        }
         rejectedCardContainer.append(card)
         statusBtn.innerHTML = "Rejected"
-        }
+    }
     updateJobCounter()
+    renderEmptyContainer();
 })
 
 // updateJob counter
@@ -212,3 +221,21 @@ function updateJobCounter() {
     totalRejeced.innerHTML = rejectedCount;
 }
 updateJobCounter();
+
+// all containers
+function renderEmptyContainer() {
+    const containers = [allCardContainer, interviewCardContainer, rejectedCardContainer];
+    for (const container of containers) {
+        if (container.children.length < 1) {
+            container.innerHTML =
+                `
+        <section class="bg-white shadow-sm rounded-md my-4 text-center empty_massage p-44">
+            <img src="./images/document.png" alt="" class="mx-auto">
+            <h2 class="text-2xl font-bold opacity-80 my-3">No Jobs Available</h2>
+            <p class="text-gray-700">Check back soon for new job opportunities</p>
+        </section>
+    `
+        }
+    }
+}
+renderEmptyContainer();
