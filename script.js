@@ -165,15 +165,15 @@ function renderAllApplications(applications) {
         card.innerHTML = `
               <div class="p-4 rounded-md bg-white shadow-sm flex items-center justify-between">
                   <div class="">
-                      <h3 class="text-xl font-bold opacity-80">${application.companyName}</h3>
-                      <h4 class="text-lg font-medium opacity-60 mb-5 mt-2">${application.position}</h4>
-                      <h5 class="opacity-60"><span>${application.location} . </span><span>${application.type} . </span><span>${application.salary} . </span></h5>
-                      <button class="btn uppercase bg-slate-300 font-semibold mb-5 mt-5 status_btn">${application.status}</button>
-                      <p class="text-gray-700 mb-5">${application.description}</p>
+                      <h3 class="text-lg sm:text-xl font-bold opacity-80">${application.companyName}</h3>
+                      <h4 class="text-base sm:text-lg font-medium opacity-60 mb-2 sm:mb-4 lg:mb-5 mt-2">${application.position}</h4>
+                      <h5 class="opacity-60 text-sm sm:text-base "><span>${application.location} . </span><span>${application.type} . </span><span>${application.salary} . </span></h5>
+                      <button class="btn uppercase bg-slate-300 font-semibold mb-2 sm:mb-4 lg:mb-5 mt-2 sm:mt-4 lg:mt-5 status_btn">${application.status}</button>
+                      <p class="text-gray-700 mb-2 sm:mb-4 lg:mb-5 text-sm sm:text-base">${application.description}</p>
                       <button                          
-                        class="btn interview_btn border-green-500 text-[16px] font-semibold hover:bg-green-400 hover:text-white duration-300 uppercase text-green-500">Interview</button>
+                        class="btn interview_btn border-green-500 text-sm sm:text-base font-semibold hover:bg-green-400 hover:text-white duration-300 uppercase text-green-500">Interview</button>
                       <button
-                        class="btn rejected_btn border-red-500 text-[16px] font-semibold ml-2 hover:bg-red-400 hover:text-white duration-300 uppercase text-red-500">Rejected</button>
+                        class="btn rejected_btn border-red-500 text-sm sm:text-base font-semibold ml-2 hover:bg-red-400 hover:text-white duration-300 uppercase text-red-500">Rejected</button>
                   </div>
                 <div>
                   <button 
@@ -238,14 +238,14 @@ function updateJobCounter(parent) {
 updateJobCounter(allCardContainer);
 availableJobContainer.innerHTML = allCardContainer.querySelectorAll(".application_card").length;
 
-// all containers
+// empty job containers
 function renderEmptyContainer() {
     const containers = [allCardContainer, interviewCardContainer, rejectedCardContainer];
     for (const container of containers) {
         if (container.children.length < 1) {
             container.innerHTML =
                 `
-        <section class="bg-white shadow-sm rounded-md my-4 text-center empty_massage p-44">
+        <section class="bg-white shadow-sm rounded-md my-4 text-center empty_massage p-10 sm:p-14 lg:p-44">
             <img src="./images/document.png" alt="" class="mx-auto">
             <h2 class="text-2xl font-bold opacity-80 my-3">No Jobs Available</h2>
             <p class="text-gray-700">Check back soon for new job opportunities</p>
