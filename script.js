@@ -175,10 +175,12 @@ function renderAllApplications(applications) {
                       <button
                         class="btn rejected_btn border-red-500 text-[16px] font-semibold ml-2 hover:bg-red-400 hover:text-white duration-300 uppercase text-red-500">Rejected</button>
                   </div>
+                <div>
                   <button 
                         class="hover:text-red-500 delete_btn duration-300 cursor-pointer p-5">
-                      <i class="fa-solid fa-trash"></i>
+                      <i class="fa-solid fa-trash pointer-events-none"></i>
                   </button>
+                </div>
               </div>
         `
         allCardContainer.append(card);
@@ -189,10 +191,12 @@ renderAllApplications(applications);
 
 // card container event control
 cardsContainer.addEventListener("click", (event) => {
+    const parent = event.target.parentNode.parentNode.parentNode.parentNode;
     const card = event.target.closest(".application_card");
     let statusBtn = card.querySelector(".status_btn");
     if (event.target.closest(".delete_btn")) {
         card.remove();
+        updateJobCounter(parent)
     } else if (event.target.classList.contains("interview_btn")) {
         const emptyBox = interviewCardContainer.querySelector(".empty_massage")
         if (emptyBox) {
@@ -200,7 +204,7 @@ cardsContainer.addEventListener("click", (event) => {
         }
         interviewCardContainer.append(card)
         statusBtn.innerHTML = "Interview"
-        // updateJobCounter()
+        updateJobCounter(parent)
     } else if (event.target.classList.contains("rejected_btn")) {
         const emptyBox = rejectedCardContainer.querySelector(".empty_massage")
         if (emptyBox) {
@@ -208,23 +212,31 @@ cardsContainer.addEventListener("click", (event) => {
         }
         rejectedCardContainer.append(card)
         statusBtn.innerHTML = "Rejected"
-        // updateJobCounter()
+        updateJobCounter(parent)
     }
-    updateJobCounter()
     renderEmptyContainer();
 })
 
 // updateJob counter
-function updateJobCounter() {
+function updateJobCounter(parent) {
     const applicationCount = allCardContainer.querySelectorAll(".application_card").length;
     const interviewCount = interviewCardContainer.querySelectorAll(".application_card").length;
     const rejectedCount = rejectedCardContainer.querySelectorAll(".application_card").length;
     totalApplication.innerHTML = applicationCount;
     totalInterview.innerHTML = interviewCount;
     totalRejeced.innerHTML = rejectedCount;
-    availableJobContainer.innerHTML = applicationCount
+    if (parent.id === allCardContainer.id) {
+        availableJobContainer.innerHTML = applicationCount;
+    }
+    if (parent.id === interviewCardContainer.id) {
+        availableJobContainer.innerHTML = interviewCount;
+    }
+    if (parent.id === rejectedCardContainer.id) {
+        availableJobContainer.innerHTML = rejectedCount;
+    }
 }
-updateJobCounter();
+updateJobCounter(allCardContainer);
+availableJobContainer.innerHTML = allCardContainer.querySelectorAll(".application_card").length;
 
 // all containers
 function renderEmptyContainer() {
